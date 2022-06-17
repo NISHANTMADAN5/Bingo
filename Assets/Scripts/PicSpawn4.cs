@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PicSpawn4 : MonoBehaviour
+{
+    // Start is called before the first frame update
+     public GameObject[] Pics;
+    public static PicSpawn4 instance;
+    void Awake() {
+        if(instance==null)
+        {
+            instance=this;
+        }    
+    }
+    [SerializeField]
+    float maxx=7.5f;
+    
+    void Start()
+    {
+        Spawn4();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    float x=-2.44f;
+    float y= 2.25f;
+    void Spawn4()
+    {
+         
+        for(int i=0;i<4;i++)
+        {
+            x=-2.44f;
+            for (int j = 0;j<4;j++)
+            {
+                int rand = Random.Range(0,Pics.Length);
+                Vector3 randomPos= new Vector3(x,y,transform.position.z);
+                Instantiate(Pics[rand],randomPos,transform.rotation);
+                x+= 1.66f;
+            }
+            y-=1.66f;
+        }
+        
+    }
+    
+}
